@@ -95,7 +95,7 @@ install_paymenter() {
     echo -e "\n${C}  [SYS] Initiating Paymenter Installation...${NC}"
     echo -e "  ${Y}● Running external script silently...${NC}"
     
-    bash <(curl -s https://raw.githubusercontent.com/nobita329/Nobita-Cloud/refs/heads/main/panel/paymenter/install.sh)
+    bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/code/main/Panel/Paymenter/run.sh)
     
     type_effect "\n${G}✔️ Installation Sequence Complete.${NC}" 0.02
 }
@@ -264,7 +264,7 @@ while true; do
         3|03) update_panel ;;
         4|04) 
             echo -e "\n${C}  [SYS] Launching Domain & SSL Configuration...${NC}"
-            bash <(curl -fsSL https://raw.githubusercontent.com/nobita329/Nobita-Cloud/refs/heads/main/panel/pterodactyl/ssl.sh) 
+            bash <(curl -fsSL https://raw.githubusercontent.com/sdgamer8263-sketch/code/main/Panel/Pterodactyl/ssl.sh) 
             ;;
         5|05) 
             echo -e "\n${C}  [SYS] Launching Theme Manager...${NC}"
