@@ -107,10 +107,10 @@ feather_submenu() {
         case $fea_choice in
             1) 
                 echo -e "\n${C}  [SYS] Launching Feather Panel (Manual)...${NC}"
-                bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/Panel/main/fea/ufea.sh) ;;
+                bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/code/main/Panel/fea/ufea.sh) ;;
             2) 
                 echo -e "\n${C}  [SYS] Launching Feather Panel (Auto)...${NC}"
-                bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/Panel/main/fea/fea.sh) ;;
+                bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/code/main/Panel/fea/fea.sh) ;;
             0) return ;;
             *) echo -e "${R}  [!] Invalid option. Please try again.${NC}"; sleep 1; continue ;;
         esac
@@ -139,10 +139,10 @@ jexactyl_submenu() {
         case $jex_choice in
             1) 
                 echo -e "\n${C}  [SYS] Launching Jexactyl Panel Setup...${NC}"
-                bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/Panel/main/Jexactyl/uJexactyl.sh) ;;
+                bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/code/main/Panel/Jexactyl/uJexactyl.sh) ;;
             2) 
                 echo -e "\n${C}  [SYS] Launching Jexapanel Setup...${NC}"
-                bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/Panel/main/Jexapanel/Jp.sh) ;;
+                bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/code/main/Panel/Jexapanel/Jp.sh) ;;
             0) return ;;
             *) echo -e "${R}  [!] Invalid option. Please try again.${NC}"; sleep 1; continue ;;
         esac
@@ -173,15 +173,15 @@ panels_submenu() {
         read -r panel_choice
         case $panel_choice in
             1) echo -e "\n${C}  [SYS] Launching Pterodactyl Installer...${NC}"; bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/Panel/main/pterodactyl/upterodactyl.sh) ;;
-            2) echo -e "\n${C}  [SYS] Launching Puffer Panel...${NC}"; bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/Panel/main/PufferPanel/PufferPanel.sh) ;;
-            3) echo -e "\n${C}  [SYS] Launching Reviactyl Panel...${NC}"; bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/Panel/main/rev/urev.sh) ;;
+            2) echo -e "\n${C}  [SYS] Launching Puffer Panel...${NC}"; bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/code/main/Panel/PufferPanel/PufferPanel.sh) ;;
+            3) echo -e "\n${C}  [SYS] Launching Reviactyl Panel...${NC}"; bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/code/main/Panel/rev/install.sh) ;;
             4) feather_submenu; continue ;;
             5) jexactyl_submenu; continue ;;
             6) echo -e "\n${C}  [SYS] Launching Skyport Panel...${NC}"; bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/Panel/main/Skyport/run.sh) ;;
             7) echo -e "\n${C}  [SYS] Launching Airlink Panel...${NC}"; bash <(curl -s https://airlink.jishnu.fun) ;;
-            8) echo -e "\n${C}  [SYS] Launching Hydra Panel...${NC}"; bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/Panel/main/Hydra/run.sh) ;;
-            9) echo -e "\n${C}  [SYS] Launching Oversee Panel...${NC}"; bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/Panel/main/Oversee/run.sh) ;;
-            10) echo -e "\n${C}  [SYS] Launching Darco Panel...${NC}"; bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/Panel/main/Darco/run.sh) ;;
+            8) echo -e "\n${C}  [SYS] Launching Hydra Panel...${NC}"; bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/code/main/Panel/Hydra/run.sh) ;;
+            9) echo -e "\n${C}  [SYS] Launching Oversee Panel...${NC}"; bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/code/main/Panel/Oversee/run.sh) ;;
+            10) echo -e "\n${C}  [SYS] Launching Darco Panel...${NC}"; bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/code/main/Panel/Darco/run.sh) ;;
             0) return ;;
             *) echo -e "${R}  [!] Invalid option. Please try again.${NC}"; sleep 1; continue ;;
         esac
