@@ -341,7 +341,7 @@ while true; do
     read -r mainopt
 
     case "$mainopt" in
-        1|01) bash <(curl -sL https://raw.githubusercontent.com/sdgamer8263-sketch/code/main/Vps making/install.sh) ;;
+        1|01) bash <(curl -sL https://raw.githubusercontent.com/sdgamer8263-sketch/code/main/Vps/install.sh) ;;
         2|02) bash <(curl -sL https://raw.githubusercontent.com/sdgamer8263-sketch/code/main/Panel/run.sh) ;;
         3|03) bash <(curl -sL https://raw.githubusercontent.com/sdgamer8263-sketch/Wings-setup/main/run.sh) ;;
         4|04) bash <(curl -sL https://raw.githubusercontent.com/sdgamer8263-sketch/tooler/main/run.sh) ;;
