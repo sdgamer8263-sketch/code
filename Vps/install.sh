@@ -190,7 +190,7 @@ EOF
     2|02)
         echo -e "\n${C}  [SYS] Starting IDX VM (KVM) From GitHub...${NC}"
         echo -e "  ${Y}● Fetching remote script...${NC}"
-        bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/code/main/Vps making/vm/vm.sh)
+        bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/code/main/Vps/vm/vm.sh)
         ;;
 
     # ---------------------------------------------------------
@@ -199,8 +199,8 @@ EOF
     3|03)
         echo -e "\n${C}  [SYS] Starting VM (No KVM) From GitHub...${NC}"
         echo -e "  ${Y}● Fetching remote scripts...${NC}"
-        bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/code/main/Vps making/idx/idx.sh)
-        bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/code/main/Vps making/non kvm/non kvm.sh)
+        bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/code/main/Vps/idx/idx.sh)
+        bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/code/main/Vps/nonkvm/nonkvm.sh)
         ;;
 
     # ---------------------------------------------------------
@@ -209,7 +209,7 @@ EOF
     4|04)
         echo -e "\n${C}  [SYS] Starting Proxmox Setup From GitHub...${NC}"
         echo -e "  ${Y}● Fetching remote script...${NC}"
-        bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/code/main/Vps making/Proxmox/Proxmox.sh)
+        bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/code/main/Vps/Proxmox/Proxmox.sh)
         ;;  
 
     # ---------------------------------------------------------
