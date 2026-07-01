@@ -172,7 +172,7 @@ panels_submenu() {
         echo -en "  ${Y}root@skahost${W}:~${C}/panels${NC}# "
         read -r panel_choice
         case $panel_choice in
-            1) echo -e "\n${C}  [SYS] Launching Pterodactyl Installer...${NC}"; bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/Panel/main/pterodactyl/upterodactyl.sh) ;;
+            1) echo -e "\n${C}  [SYS] Launching Pterodactyl Installer...${NC}"; bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/code/main/Panel/Pterodactyl/install.sh) ;;
             2) echo -e "\n${C}  [SYS] Launching Puffer Panel...${NC}"; bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/code/main/Panel/PufferPanel/PufferPanel.sh) ;;
             3) echo -e "\n${C}  [SYS] Launching Reviactyl Panel...${NC}"; bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/code/main/Panel/rev/install.sh) ;;
             4) feather_submenu; continue ;;
