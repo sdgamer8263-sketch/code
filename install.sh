@@ -342,7 +342,7 @@ while true; do
 
     case "$mainopt" in
         1|01) bash <(curl -sL https://raw.githubusercontent.com/sdgamer8263-sketch/code/main/Vps making/install.sh) ;;
-        2|02) bash <(curl -sL https://raw.githubusercontent.com/sdgamer8263-sketch/Panel/main/run.sh) ;;
+        2|02) bash <(curl -sL https://raw.githubusercontent.com/sdgamer8263-sketch/code/main/Panel/run.sh) ;;
         3|03) bash <(curl -sL https://raw.githubusercontent.com/sdgamer8263-sketch/Wings-setup/main/run.sh) ;;
         4|04) bash <(curl -sL https://raw.githubusercontent.com/sdgamer8263-sketch/tooler/main/run.sh) ;;
         5|05) bash <(curl -sL https://raw.githubusercontent.com/sdgamer8263-sketch/Theme/main/run.sh) ;;
