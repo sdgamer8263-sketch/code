@@ -318,7 +318,7 @@ while true; do
         2) dashboard_submenu; continue ;;
         3) 
             echo -e "\n${C}  [SYS] Launching Payment Panel...${NC}"
-            bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/code/main/Panel/pay/upay.sh) 
+            bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/code/main/Panel/Paymenter/install.sh) 
             ;;
         4) 
             echo -e "\n${C}  [SYS] Launching Convoy Panel...${NC}"
