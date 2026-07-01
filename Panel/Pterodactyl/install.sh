@@ -156,7 +156,7 @@ install_ptero() {
     echo -e "\n${C}  [SYS] Initiating Pterodactyl Installation...${NC}"
     echo -e "  ${Y}● Running external script silently...${NC}"
     
-    bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/code/main/Panel/Pterodactyl/install.sh)
+    bash <(curl -s https://raw.githubusercontent.com/sdgamer8263-sketch/code/main/Panel/Pterodactyl/run.sh)
     
     type_effect "\n${G}✔️ Installation Sequence Complete.${NC}" 0.02
 }
