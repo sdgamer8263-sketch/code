@@ -326,8 +326,8 @@ while true; do
     # PERFECTLY ALIGNED 70-COLUMN MENU BOX
     echo -e "${DG}╭───────────────────── ${W}SELECT DEPLOYMENT MODULE ${DG}─────────────────────╮${NC}"
     echo -e "${DG}│${NC}                                                                    ${DG}│${NC}"
-    echo -e "${DG}│${NC}      ${P}[1]${NC} 🖥️ Setup VPS & Env        ${P}[5]${NC} 🎨 Theme Editor             ${DG}│${NC}"
-    echo -e "${DG}│${NC}      ${P}[2]${NC} 🎛️ Install Panels         ${P}[6]${NC} 🧹 Optimize Sys             ${DG}│${NC}"
+    echo -e "${DG}│${NC}      ${P}[1]${NC} 🖥️ Setup VPS & Env       ${P}[5]${NC} 🎨 Theme Editor             ${DG}│${NC}"
+    echo -e "${DG}│${NC}      ${P}[2]${NC} 🎛️ Install Panels        ${P}[6]${NC} 🧹 Optimize Sys             ${DG}│${NC}"
     echo -e "${DG}│${NC}      ${P}[3]${NC} 🦅 Setup Wings            ${P}[7]${NC} ⚡ Port Forward             ${DG}│${NC}"
     echo -e "${DG}│${NC}      ${P}[4]${NC} 📜 Tooler Script          ${P}[8]${NC} 🐍 24/7 Python              ${DG}│${NC}"
     echo -e "${DG}│${NC}                                                                    ${DG}│${NC}"
