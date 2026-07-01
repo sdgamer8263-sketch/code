@@ -162,10 +162,10 @@ panels_submenu() {
         echo -e "${DG}│${NC}   ${P}[2]${NC} Puffer Panel             ${P}[7]${NC} Airlink Panel (Jishnu Bhi)      ${DG}│${NC}"
         echo -e "${DG}│${NC}   ${P}[3]${NC} Reviactyl Panel          ${P}[8]${NC} Hydra Panel                     ${DG}│${NC}"
         echo -e "${DG}│${NC}   ${P}[4]${NC} Feather Panel Menu       ${P}[9]${NC} Oversee Panel                   ${DG}│${NC}"
-        echo -e "${DG}│${NC}   ${P}[5]${NC} Jexactyl Panel Menu      ${P}[10]${NC} Darco Panel                     ${DG}│${NC}"
+        echo -e "${DG}│${NC}   ${P}[5]${NC} Jexactyl Panel Menu      ${P}[10]${NC} Darco Panel                    ${DG}│${NC}"
         echo -e "${DG}│${NC}                                                                    ${DG}│${NC}"
         echo -e "${DG}├────────────────────────────────────────────────────────────────────┤${NC}"
-        echo -e "${DG}│${NC}                         ${R}[0] 🔙 RETURN TO MAIN${NC}                    ${DG}│${NC}"
+        echo -e "${DG}│${NC}                         ${R}[0] 🔙 RETURN TO MAIN${NC}                     ${DG}│${NC}"
         echo -e "${DG}╰────────────────────────────────────────────────────────────────────╯${NC}"
         echo ""
         
