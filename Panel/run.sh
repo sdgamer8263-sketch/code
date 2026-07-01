@@ -300,7 +300,7 @@ while true; do
     # PERFECTLY ALIGNED 70-COLUMN MENU BOX
     echo -e "${DG}╭───────────────────── ${W}SELECT DEPLOYMENT MODULE ${DG}─────────────────────╮${NC}"
     echo -e "${DG}│${NC}                                                                    ${DG}│${NC}"
-    echo -e "${DG}│${NC}      ${P}[1]${NC} 🖥️  Server Panels          ${P}[5]${NC} 🎛️  Control Panel         ${DG}│${NC}"
+    echo -e "${DG}│${NC}      ${P}[1]${NC} 🖥️  Server Panels          ${P}[5]${NC} 🎛️  Control Panel        ${DG}│${NC}"
     echo -e "${DG}│${NC}      ${P}[2]${NC} 📊 Web Dashboards          ${P}[6]${NC} ⚙️  VPS Control Panel      ${DG}│${NC}"
     echo -e "${DG}│${NC}      ${P}[3]${NC} 💳 Payment Panel           ${P}[7]${NC} 💼 WHMC Panel              ${DG}│${NC}"
     echo -e "${DG}│${NC}      ${P}[4]${NC} 🚛 Convoy Panel                                           ${DG}│${NC}"
