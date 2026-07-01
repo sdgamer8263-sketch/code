@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # ==========================================
-# SKA HOST MULTI-TOOL (V5.0 - CYBER-DASH UI)
+# SKA HOST MULTI-TOOL (V5.1 - PERFECT ALIGNMENT)
 # STYLE: NEON CYBERPUNK + DOUBLE BORDERS
 # MODULES: NATIVE PLAYIT + NATIVE FXTUNNEL
 # ==========================================
@@ -61,15 +61,19 @@ boot_sequence() {
 # 🖥️ BANNERS & DASHBOARDS
 # ==========================================
 
-# Main Dashboard UI
+# Main Dashboard UI (Fixed Alignment & Dynamic Padding)
 show_dashboard() {
     clear
     
-    local UPTIME=$(uptime -p | sed 's/up //') 
+    # Compress uptime to fit nicely (e.g. "1 days, 2 hours" -> "1d 2h")
+    local UPTIME=$(uptime -p | sed -e 's/up //' -e 's/ hours/h/' -e 's/ hour/h/' -e 's/ minutes/m/' -e 's/ minute/m/' -e 's/ days/d/' -e 's/ day/d/' -e 's/,//g') 
     local CPU_LOAD=$(top -bn1 | grep load | awk '{printf "%.2f", $(NF-2)}')
     local RAM_FREE=$(free -m | awk '/Mem:/ { printf("%.0f%%", $3/$2 * 100.0) }')
     
-    printf -v PAD_UPTIME "%-12s" "$UPTIME"
+    # Strict padding so the right border NEVER breaks
+    printf -v PAD_UPTIME "UP: %-12s" "${UPTIME:0:12}"
+    printf -v PAD_CPU "CPU: %-5s" "${CPU_LOAD}%"
+    printf -v PAD_RAM "RAM: %-4s" "${RAM_FREE}"
 
     echo -e "${C}╔════════════════════════════════════════════════════════════════════╗${NC}"
     echo -e "${C}║${NC}   ${C}███████╗██╗  ██╗ █████╗     ██╗  ██╗ ██████╗ ███████╗████████╗${NC}   ${C}║${NC}"
@@ -79,7 +83,7 @@ show_dashboard() {
     echo -e "${C}║${NC}   ${G}███████║██║  ██╗██║  ██║    ██║  ██║╚██████╔╝███████║   ██║   ${NC}   ${C}║${NC}"
     echo -e "${C}║${NC}   ${W}╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝    ╚═╝  ╚═╝ ╚═════╝ ╚══════╝   ╚═╝   ${NC}   ${C}║${NC}"
     echo -e "${C}╠════════════════════════════════════════════════════════════════════╣${NC}"
-    echo -e "${C}║${NC} ${BLINK}${G}● ONLINE${NC} ${DG}│${NC} ⏱️ ${W}UPTIME: ${PAD_UPTIME}${NC} ${DG}│${NC} 🧠 ${W}CPU: ${CPU_LOAD}%${NC} ${DG}│${NC} 💾 ${W}RAM: ${RAM_FREE}${NC}     ${C}║${NC}"
+    echo -e "${C}║${NC} ${BLINK}${G}● ONLINE${NC} ${DG}│${NC} ⏱️ ${W}${PAD_UPTIME}${NC} ${DG}│${NC} 🧠 ${W}${PAD_CPU}${NC} ${DG}│${NC} 💾 ${W}${PAD_RAM}${NC}      ${C}║${NC}"
     echo -e "${C}╚════════════════════════════════════════════════════════════════════╝${NC}"
 }
 
@@ -123,13 +127,13 @@ show_fxtunnel_dash() {
 playit_menu() {
     while true; do
         show_playit_dash
-        echo -e "      ${C}╭──────────────────────────────────────────────────╮${NC}"
-        echo -e "      ${C}│${NC}  ${G}[A]${NC} 📥 Install & Configure Playit.GG            ${C}│${NC}"
-        echo -e "      ${C}│${NC}  ${G}[B]${NC} 📊 Check Connection Status                  ${C}│${NC}"
-        echo -e "      ${C}│${NC}  ${R}[C]${NC} 🔙 Back to Port Forwarding Menu             ${C}│${NC}"
-        echo -e "      ${C}╰──────────────────────────────────────────────────╯${NC}"
+        echo -e "${C}╭────────────────────────────────────────────────────────────────────╮${NC}"
+        echo -e "${C}│${NC}  ${G}[A]${NC} 📥 Install & Configure Playit.GG                                ${C}│${NC}"
+        echo -e "${C}│${NC}  ${G}[B]${NC} 📊 Check Connection Status                                      ${C}│${NC}"
+        echo -e "${C}│${NC}  ${R}[C]${NC} 🔙 Back to Port Forwarding Menu                                 ${C}│${NC}"
+        echo -e "${C}╰────────────────────────────────────────────────────────────────────╯${NC}"
         echo ""
-        # 🟢 TERMINAL PROMPT (PLAYIT MENU)
+        
         echo -en "  ${Y}root@skahost${W}:~${P}/port-forward/playit${NC}# "
         read -r subopt
         case "$subopt" in
@@ -152,7 +156,7 @@ playit_menu() {
                 echo -e "\n${C}  [SYS] Running Playit Setup...${NC}"
                 playit setup
 
-                type_effect "\n${G}✅  Playit installation complete!${NC}" 0.02
+                type_effect "\n${G}✅ Playit installation complete!${NC}" 0.02
                 type_effect "${DG}➡️ Run 'playit status' to check the tunnel status.${NC}" 0.02
                 
                 echo -en "  ${Y}root@skahost${W}:~${DG}/sys/pause${NC} (Press ENTER) "
@@ -181,20 +185,19 @@ fxtunnel_menu() {
         
         # Check if FXTunnel is running
         if systemctl is-active --quiet skahost-fxtunnel.service 2>/dev/null; then
-            echo -e "      ${DG} STATUS:${NC} ${G}● ACTIVE / RUNNING${NC}"
+            echo -e "  ${DG} STATUS:${NC} ${G}● ACTIVE / RUNNING${NC}"
         else
-            echo -e "      ${DG} STATUS:${NC} ${R}● OFFLINE / STOPPED${NC}"
+            echo -e "  ${DG} STATUS:${NC} ${R}● OFFLINE / STOPPED${NC}"
         fi
         
-        echo -e "      ${C}╭──────────────────────────────────────────────────╮${NC}"
-        echo -e "      ${C}│${NC}  ${G}[1]${NC} 📥 Install FXTUNNEL Core                    ${C}│${NC}"
-        echo -e "      ${C}│${NC}  ${Y}[2]${NC} 🚀 Setup & Start Tunnel (Port & Token)      ${C}│${NC}"
-        echo -e "      ${C}│${NC}  ${R}[3]${NC} 🛑 Stop & Delete Tunnel                     ${C}│${NC}"
-        echo -e "      ${C}│${NC}  ${DG}[0]${NC} 🔙 Back to Port Forwarding Menu             ${C}│${NC}"
-        echo -e "      ${C}╰──────────────────────────────────────────────────╯${NC}"
+        echo -e "${C}╭────────────────────────────────────────────────────────────────────╮${NC}"
+        echo -e "${C}│${NC}  ${G}[1]${NC} 📥 Install FXTUNNEL Core                                        ${C}│${NC}"
+        echo -e "${C}│${NC}  ${Y}[2]${NC} 🚀 Setup & Start Tunnel (Port & Token)                          ${C}│${NC}"
+        echo -e "${C}│${NC}  ${R}[3]${NC} 🛑 Stop & Delete Tunnel                                         ${C}│${NC}"
+        echo -e "${C}│${NC}  ${DG}[0]${NC} 🔙 Back to Port Forwarding Menu                                 ${C}│${NC}"
+        echo -e "${C}╰────────────────────────────────────────────────────────────────────╯${NC}"
         echo ""
         
-        # 🟢 TERMINAL PROMPT (FXTUNNEL MENU)
         echo -en "  ${Y}root@skahost${W}:~${B}/port-forward/fxtunnel${NC}# "
         read -r subopt
         case "$subopt" in
@@ -218,11 +221,9 @@ fxtunnel_menu() {
             2|02) 
                 echo -e "\n${C}  [SYS] Configuring FXTUNNEL Connection...${NC}"
                 
-                # 🟢 TERMINAL PROMPT (PORT INPUT)
                 echo -en "  ${Y}root@skahost${W}:~${B}/fxtunnel/set-port${NC} (e.g. 22)# "
                 read -r port
                 
-                # 🟢 TERMINAL PROMPT (TOKEN INPUT)
                 echo -en "  ${Y}root@skahost${W}:~${B}/fxtunnel/set-token${NC}# "
                 read -r token
                 
@@ -288,18 +289,17 @@ port_forward_menu() {
     while true; do
         clear
         echo -e "\n"
-        echo -e "      ${Y}╔════════════════════════════════════════════════════╗${NC}"
-        echo -e "      ${Y}║${NC}             ${C}⚡ PORT FORWARDING TOOL ⚡${NC}             ${Y}║${NC}"
-        echo -e "      ${Y}╠════════════════════════════════════════════════════╣${NC}"
-        echo -e "      ${Y}║${NC}                                                    ${Y}║${NC}"
-        echo -e "      ${Y}║${NC}   ${G}[1]${NC} 🎮 PLAYIT.GG (Default Tunnel)                ${Y}║${NC}"
-        echo -e "      ${Y}║${NC}   ${B}[2]${NC} 🚇 FXTUNNEL (Advanced Tunnel)                ${Y}║${NC}"
-        echo -e "      ${Y}║${NC}                                                    ${Y}║${NC}"
-        echo -e "      ${Y}║${NC}   ${R}[0]${NC} 🔙 BACK TO MAIN DASHBOARD                    ${Y}║${NC}"
-        echo -e "      ${Y}╚════════════════════════════════════════════════════╝${NC}"
+        echo -e "${Y}╔════════════════════════════════════════════════════════════════════╗${NC}"
+        echo -e "${Y}║${NC}                     ${C}⚡ PORT FORWARDING TOOL ⚡${NC}                     ${Y}║${NC}"
+        echo -e "${Y}╠════════════════════════════════════════════════════════════════════╣${NC}"
+        echo -e "${Y}║${NC}                                                                    ${Y}║${NC}"
+        echo -e "${Y}║${NC}   ${G}[1]${NC} 🎮 PLAYIT.GG (Default Tunnel)                                ${Y}║${NC}"
+        echo -e "${Y}║${NC}   ${B}[2]${NC} 🚇 FXTUNNEL (Advanced Tunnel)                                ${Y}║${NC}"
+        echo -e "${Y}║${NC}                                                                    ${Y}║${NC}"
+        echo -e "${Y}║${NC}   ${R}[0]${NC} 🔙 BACK TO MAIN DASHBOARD                                    ${Y}║${NC}"
+        echo -e "${Y}╚════════════════════════════════════════════════════════════════════╝${NC}"
         echo ""
         
-        # 🟢 TERMINAL PROMPT (PORT FORWARD MENU)
         echo -en "  ${Y}root@skahost${W}:~${C}/port-forward${NC}# "
         read -r pf_opt
         
@@ -323,20 +323,20 @@ boot_sequence
 while true; do
     show_dashboard
     
-    echo -e "      ${DG}╭───────────── ${W}SELECT DEPLOYMENT MODULE ${DG}─────────────╮${NC}"
-    echo -e "      ${DG}│${NC}                                                    ${DG}│${NC}"
-    echo -e "      ${DG}│${NC}   ${P}[1]${NC} 🖥️ Setup VPS & Env      ${P}[5]${NC} 🎨 Theme Editor  ${DG}│${NC}"
-    echo -e "      ${DG}│${NC}   ${P}[2]${NC} 🎛️ Install Panels       ${P}[6]${NC} 🧹 Optimize Sys  ${DG}│${NC}"
-    echo -e "      ${DG}│${NC}   ${P}[3]${NC} 🦅 Setup Wings          ${P}[7]${NC} ⚡ Port Forward  ${DG}│${NC}"
-    echo -e "      ${DG}│${NC}   ${P}[4]${NC} 📜 Tooler Script        ${P}[8]${NC} 🐍 24/7 Python   ${DG}│${NC}"
-    echo -e "      ${DG}│${NC}                                                    ${DG}│${NC}"
-    echo -e "      ${DG}│${NC}   ${P}[9]${NC} ✏️ Edit Tooler Script                         ${DG}│${NC}"
-    echo -e "      ${DG}├────────────────────────────────────────────────────┤${NC}"
-    echo -e "      ${DG}│${NC}                  ${R}[0] ❌ SYSTEM EXIT${NC}                ${DG}│${NC}"
-    echo -e "      ${DG}╰────────────────────────────────────────────────────╯${NC}"
+    # PERFECTLY ALIGNED 70-COLUMN MENU BOX
+    echo -e "${DG}╭───────────────────── ${W}SELECT DEPLOYMENT MODULE ${DG}─────────────────────╮${NC}"
+    echo -e "${DG}│${NC}                                                                    ${DG}│${NC}"
+    echo -e "${DG}│${NC}      ${P}[1]${NC} 🖥️ Setup VPS & Env        ${P}[5]${NC} 🎨 Theme Editor             ${DG}│${NC}"
+    echo -e "${DG}│${NC}      ${P}[2]${NC} 🎛️ Install Panels         ${P}[6]${NC} 🧹 Optimize Sys             ${DG}│${NC}"
+    echo -e "${DG}│${NC}      ${P}[3]${NC} 🦅 Setup Wings            ${P}[7]${NC} ⚡ Port Forward             ${DG}│${NC}"
+    echo -e "${DG}│${NC}      ${P}[4]${NC} 📜 Tooler Script          ${P}[8]${NC} 🐍 24/7 Python              ${DG}│${NC}"
+    echo -e "${DG}│${NC}                                                                    ${DG}│${NC}"
+    echo -e "${DG}│${NC}      ${P}[9]${NC} ✏️ Edit Tooler Script                                     ${DG}│${NC}"
+    echo -e "${DG}├────────────────────────────────────────────────────────────────────┤${NC}"
+    echo -e "${DG}│${NC}                         ${R}[0] ❌ SYSTEM EXIT${NC}                         ${DG}│${NC}"
+    echo -e "${DG}╰────────────────────────────────────────────────────────────────────╯${NC}"
     echo ""
     
-    # 🟢 TERMINAL PROMPT (MAIN MENU)
     echo -en "  ${Y}root@skahost${W}:~${C}/home${NC}# "
     read -r mainopt
 
@@ -365,8 +365,6 @@ while true; do
 
     echo -e "\n${G}  [+] Sequence Completed Successfully!${NC}"
     
-    # 🟢 TERMINAL PROMPT (PAUSE / WAIT)
     echo -en "  ${Y}root@skahost${W}:~${DG}/sys/pause${NC} (Press ENTER) "
     read -r
 done
-
