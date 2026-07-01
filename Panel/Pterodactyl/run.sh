@@ -191,7 +191,7 @@ boot_sequence
 show_dashboard
 
 # --- DATA COLLECTION ---
-ask "Panel Domain" "panel.nobita.indevs.in" DOMAIN
+ask "Panel Domain" "panel.skahost.in" DOMAIN
 ask "Admin Email" "admin@gmail.com" EMAIL
 ask "Admin Username" "admin" USERNAME
 ask_timeout "Admin Password" "admin" PASSWORD
